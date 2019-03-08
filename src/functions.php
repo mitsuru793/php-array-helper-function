@@ -12,6 +12,23 @@ if (!function_exists('is_numeric_array')) {
     }
 }
 
+if (!function_exists('array_every')) {
+    function array_every(array $array, callable $test = null): bool
+    {
+        if (is_null($test)) {
+            foreach ($array as $value) {
+                if (!$value) return false;
+            }
+            return true;
+        }
+
+        foreach ($array as $key => $value) {
+            if (!$test($value, $key)) return false;
+        }
+        return true;
+    }
+}
+
 if (!function_exists('array_diff_key_recursive')) {
     function array_diff_key_recursive(array $main, array $other): array
     {
