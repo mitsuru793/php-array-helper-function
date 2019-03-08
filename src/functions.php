@@ -16,8 +16,10 @@ if (!function_exists('is_full_array')) {
 }
 
 if (!function_exists('is_numeric_array')) {
-    function is_numeric_array(array $array): bool
+    function is_numeric_array($array): bool
     {
+        if (!is_array($array)) return false;
+
         $keys = array_keys($array);
         foreach ($keys as $key) {
             if (!is_int($key)) return false;
@@ -27,8 +29,10 @@ if (!function_exists('is_numeric_array')) {
 }
 
 if (!function_exists('is_numeric_array_recursive')) {
-    function is_numeric_array_recursive(array $array): bool
+    function is_numeric_array_recursive($array): bool
     {
+        if (!is_array($array)) return false;
+
         foreach ($array as $key => $value) {
            if (is_array($value) && !is_numeric_array_recursive($value)) {
                return false;

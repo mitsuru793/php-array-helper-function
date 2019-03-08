@@ -7,6 +7,15 @@ use Helper\TestBase;
 
 abstract class IsNumericArrayTestBase extends TestBase
 {
+    public function testReturnsFalseWhenGivenScala()
+    {
+        $inputs = [0, 1, true, false, '', 'a', null];
+        foreach ($inputs as $input) {
+            $this->assertNotNumeric($input);
+
+        }
+    }
+
     public function testShallow()
     {
         $this->assertNumeric(['mike', 19]);
