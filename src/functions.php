@@ -8,6 +8,13 @@ if (!function_exists('is_empty_array')) {
     }
 }
 
+if (!function_exists('is_full_array')) {
+    function is_full_array($value): bool
+    {
+        return is_array($value) && !empty($value);
+    }
+}
+
 if (!function_exists('is_numeric_array')) {
     function is_numeric_array(array $array): bool
     {
