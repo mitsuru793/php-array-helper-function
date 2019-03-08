@@ -1,6 +1,17 @@
 <?php
 declare(strict_types=1);
 
+if (!function_exists('is_numeric_array')) {
+    function is_numeric_array(array $array): bool
+    {
+        $keys = array_keys($array);
+        foreach ($keys as $key) {
+            if (!is_int($key)) return false;
+        }
+        return true;
+    }
+}
+
 if (!function_exists('array_diff_key_recursive')) {
     function array_diff_key_recursive(array $main, array $other): array
     {
