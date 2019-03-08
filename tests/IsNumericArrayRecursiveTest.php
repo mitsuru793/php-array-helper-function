@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Php;
 
-final class IsNumericArrayTest extends IsNumericArrayTestBase
+final class IsNumericArrayRecursiveTest extends IsNumericArrayTestBase
 {
     public function testDeep()
     {
@@ -11,7 +11,7 @@ final class IsNumericArrayTest extends IsNumericArrayTestBase
             [],
         ]);
 
-        $this->assertNumeric([
+        $this->assertNotNumeric([
             ['name' => 'mike'],
             ['name' => 'jane'],
         ]);
@@ -22,7 +22,7 @@ final class IsNumericArrayTest extends IsNumericArrayTestBase
             [[4]],
         ]);
 
-        $this->assertNumeric([
+        $this->assertNotNumeric([
             [1, 2],
             3,
             [['k' => 4]],
@@ -31,11 +31,11 @@ final class IsNumericArrayTest extends IsNumericArrayTestBase
 
     protected function assertNumeric($array): void
     {
-        $this->assertTrue(is_numeric_array($array));
+        $this->assertTrue(is_numeric_array_recursive($array));
     }
 
     protected function assertNotNumeric($array): void
     {
-        $this->assertFalse(is_numeric_array($array));
+        $this->assertFalse(is_numeric_array_recursive($array));
     }
 }

@@ -12,6 +12,18 @@ if (!function_exists('is_numeric_array')) {
     }
 }
 
+if (!function_exists('is_numeric_array_recursive')) {
+    function is_numeric_array_recursive(array $array): bool
+    {
+        foreach ($array as $key => $value) {
+           if (is_array($value) && !is_numeric_array_recursive($value)) {
+               return false;
+           }
+        }
+        return is_numeric_array($array);
+    }
+}
+
 if (!function_exists('array_every')) {
     function array_every(array $array, callable $test = null): bool
     {
