@@ -59,6 +59,23 @@ if (!function_exists('array_every')) {
     }
 }
 
+if (!function_exists('array_any')) {
+    function array_any(array $array, callable $test = null): bool
+    {
+        if (is_null($test)) {
+            foreach ($array as $value) {
+                if ($value) return true;
+            }
+            return false;
+        }
+
+        foreach ($array as $key => $value) {
+            if ($test($value, $key)) return true;
+        }
+        return false;
+    }
+}
+
 if (!function_exists('array_diff_key_recursive')) {
     function array_diff_key_recursive(array $main, array $other): array
     {
