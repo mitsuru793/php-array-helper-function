@@ -2,6 +2,21 @@
 
 This adds functions about array. If you feel like there few php built-in functions about array, this will be useful.
 
+# Installation
+
+if you're using Composer to manage dependencies, you can include the following in your composer.json file:
+
+```json
+"require": {
+    "mitsuru793/array-helper-function
+}
+```
+Then, after running composer update or php composer.phar update, you can load the class using Composer's autoloading:
+
+```php
+require 'vendor/autoload.php';
+```
+
 # Functions 
 
 ## condtion

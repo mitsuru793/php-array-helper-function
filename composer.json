@@ -35,15 +35,11 @@
         "phpstan/phpstan": "dev-master"
     },
     "autoload": {
-        "psr-4": {
-            "Php\\": "src/"
-        },
         "files": ["src/functions.php"]
     },
     "autoload-dev": {
         "psr-4": {
-            "Helper\\": "tests/Helper",
-            "Php\\": "tests/"
+            "Helper\\": "tests/Helper"
         }
     }
 }
