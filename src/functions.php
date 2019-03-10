@@ -100,6 +100,22 @@ if (!function_exists('array_diff_key_recursive')) {
     }
 }
 
+if (!function_exists('array_filter_recursive')) {
+    function array_filter_recursive($array, callable $test = null): array
+    {
+        foreach ($array as &$value) {
+            if (is_array($value)) {
+                $value = array_filter_recursive($value, $test);
+            }
+        }
+
+        if (is_null($test)) {
+            return array_filter($array);
+        }
+        return array_filter($array, $test, ARRAY_FILTER_USE_BOTH);
+    }
+}
+
 if (!function_exists('array_pick')) {
     function array_pick(&$array, array $values): array
     {
