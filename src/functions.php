@@ -99,3 +99,22 @@ if (!function_exists('array_diff_key_recursive')) {
         return $diff;
     }
 }
+
+if (!function_exists('array_pick')) {
+    function array_pick(&$array, array $values): array
+    {
+        $new = [];
+        $picked = [];
+
+        foreach ($array as $k => $v) {
+            if (in_array($v, $values, true)) {
+                $picked[$k] = $v;
+                continue;
+            }
+            $new[$k] = $v;
+        }
+
+        $array = $new;
+        return $picked;
+    }
+}
