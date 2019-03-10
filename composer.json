@@ -1,7 +1,22 @@
 {
-    "name": "mitsuru793/",
-    "description": "",
+    "name": "mitsuru793/array-helper-function",
     "type": "library",
+    "description": "This adds functions about array. If you feel like there few php built-in functions about array, this will be useful.",
+    "keywords": [
+        "array",
+        "helper",
+        "function",
+        "util"
+    ],
+    "homepage": "https://github.com/mitsuru793/php-array-helper-function",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mitsuru793",
+            "email": "mitsuru793@gmail.com",
+            "role": "Developer"
+        }
+    ],
     "scripts": {
       "test": "phpunit --color=always",
       "analyze": "phpstan analyze $(git diff --diff-filter=ACMR --name-only --find-renames=0% $(git merge-base origin/master HEAD))",
