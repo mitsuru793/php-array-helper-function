@@ -34,9 +34,9 @@ if (!function_exists('is_numeric_array_recursive')) {
         if (!is_array($array)) return false;
 
         foreach ($array as $key => $value) {
-           if (is_array($value) && !is_numeric_array_recursive($value)) {
-               return false;
-           }
+            if (is_array($value) && !is_numeric_array_recursive($value)) {
+                return false;
+            }
         }
         return is_numeric_array($array);
     }
