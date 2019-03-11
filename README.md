@@ -20,24 +20,24 @@ require 'vendor/autoload.php';
 # Functions 
 
 ## condtion
-* [is_empty_array](#is_empty_arrayvalue)
-* [is_full_array](#is_full_arrayvalue)
-* [is_numeric_array](#is_numeric_arrayvalue)
-* [is_numeric_array_recursive](#is_numeric_array_recursivearray)
-* [array_every](#array_everyarray-array-callable-test--null)
-* [array_any](#array_anyarray-array-callable-test--null)
+* [is_empty_array](#is_empty_arrayvalue-bool)
+* [is_full_array](#is_full_arrayvalue-bool)
+* [is_numeric_array](#is_numeric_arrayvalue-bool)
+* [is_numeric_array_recursive](#is_numeric_array_recursivearray-bool)
+* [array_every](#array_everyarray-array-callable-test--null-bool)
+* [array_any](#array_anyarray-array-callable-test--null-bool)
 
 ## each
 * [array_keys_recursive](#array_keys_recursivearray-array-array)
-* [array_diff_key_recursive](#array_diff_key_recursivearray-main-array-other)
-* [array_filter_recursive](#array_filter_recursivearray-callable-test--null)
+* [array_diff_key_recursive](#array_diff_key_recursivearray-main-array-other-array)
+* [array_filter_recursive](#array_filter_recursivearray-callable-test--null-array)
 
 ## modify
-* [array_pick](#array_pickarray-array-array-values)
+* [array_pick](#array_pickarray-array-array-values-array)
 
 ### Function detail
 
-#### is_empty_array($value)
+#### is_empty_array($value): bool
 
 Finds whether a variable is a empty array.
 
@@ -54,7 +54,7 @@ returns false when value is
 is_empty_array([]) // true
 ```
 
-#### is_full_array($value)
+#### is_full_array($value): bool
 
 Finds whether a variable is a full array, so it's not empty array.
 
@@ -72,7 +72,7 @@ returns false when value is
 is_full_array([1]) // true
 ```
 
-#### is_numeric_array($value)
+#### is_numeric_array($value): bool
 
 Finds whether all keys of variable are integer. This does not find deeply if element of `$value` is array.
 
@@ -89,7 +89,7 @@ returns false when value is
 is_numeric_array([1]) // true
 ```
 
-#### is_numeric_array_recursive($array)
+#### is_numeric_array_recursive($array): bool
 
 Finds whether all keys of variable are integer deeply. This is like [is_numeric_array](#is_numeric_array)
 
@@ -106,7 +106,7 @@ returns false when value is
 is_numeric_array_recursive([1]) // true
 ```
 
-#### array_every(array $array, callable $test = null)
+#### array_every(array $array, callable $test = null): bool
 
 Verify that all elements of a `$array` pass a given truth `$test`.
 
@@ -128,7 +128,7 @@ array_every([1, 2, 3]);
 // true
 ```
 
-#### array_any(array $array, callable $test = null)
+#### array_any(array $array, callable $test = null): bool
 
 Verify that a element of a `$array` pass a given truth `$test`.
 
@@ -179,7 +179,7 @@ array_keys_recursive($array);
 // ]
 ```
 
-#### array_diff_key_recursive(array $main, array $other)
+#### array_diff_key_recursive(array $main, array $other): array
 
 This is like [array_diff_key](http://php.net/manual/en/function.array-diff-key.php), but recursively.
 
@@ -216,7 +216,7 @@ array_diff_key_recursive($other, $main));
 // ]
 ```
 
-#### array_filter_recursive($array, callable $test = null)
+#### array_filter_recursive($array, callable $test = null): array
 
 This is like [array_filter](http://php.net/manual/en/function.array-filter.php), but recursively. The closure `$test` is passed `$key` by default. 
 
@@ -256,7 +256,7 @@ array_filter_recursive($array, function ($v, $k) {
 // ]
 ```
 
-#### array_pick(array &$array, array $values)
+#### array_pick(array &$array, array $values): array
 
 Find whether `$values` match elements of `$array` strictly, and takes matched values from `$array`. Has side effect and modify `$array`.
 
