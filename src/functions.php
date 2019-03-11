@@ -76,6 +76,30 @@ if (!function_exists('array_any')) {
     }
 }
 
+if (!function_exists('array_keys_recursive')) {
+    function array_keys_recursive(array $array): array
+    {
+        // To add argument 2 $prefix, create closure $func.
+        // $prefix is ['deep1-key', 'deep2-key', ...]
+        $func = function (array $array, array $prefix = []) use (&$func) {
+            $keys = [];
+            foreach ($array as $key => $value) {
+                if (!is_full_array($value)) {
+                    // If $value is empty array [], stop to search key deeply.
+                    $keys[] = empty($prefix) ? $key : array_merge($prefix, [$key]);
+                    continue;
+                }
+
+                $deepKeys = empty($prefix) ? [$key] : array_merge($prefix, [$key]);
+                $res = $func($value, $deepKeys);
+                $keys = array_merge($keys, $res);
+            }
+            return $keys;
+        };
+        return $func($array);
+    }
+}
+
 if (!function_exists('array_diff_key_recursive')) {
     function array_diff_key_recursive(array $main, array $other): array
     {

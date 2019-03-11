@@ -28,6 +28,7 @@ require 'vendor/autoload.php';
 * [array_any](#array_anyarray-array-callable-test--null)
 
 ## each
+* [array_keys_recursive](#array_keys_recursivearray-array-array)
 * [array_diff_key_recursive](#array_diff_key_recursivearray-main-array-other)
 * [array_filter_recursive](#array_filter_recursivearray-callable-test--null)
 
@@ -147,6 +148,35 @@ If the `$test` is null, verify one is truly.
 ```php
 array_every([1, 2, 3]);
 // true
+```
+
+#### array_keys_recursive(array $array): array
+
+This is like  [array_keys](http://php.net/manual/en/function.array-keys.php), but recursively. Return combinations of all keys.
+
+```php
+$array = [
+    'Japan' => [
+        'Tokyo' => [
+            'user1' => 'Mike',
+            'user2' => 'Jane',
+            'Hiro',
+            'Hanako',
+        ],
+        'Kyoto' => [],
+    ],
+    'Take',
+];
+
+array_keys_recursive($array);
+// [
+//     ['Japan', 'Tokyo', 'user1'],
+//     ['Japan', 'Tokyo', 'user2'],
+//     ['Japan', 'Tokyo', 0],
+//     ['Japan', 'Tokyo', 1],
+//     ['Japan', 'Kyoto'],
+//     0,
+// ]
 ```
 
 #### array_diff_key_recursive(array $main, array $other)
