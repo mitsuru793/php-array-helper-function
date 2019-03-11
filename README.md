@@ -32,7 +32,8 @@ require 'vendor/autoload.php';
 * [array_diff_key_recursive](#array_diff_key_recursivearray-main-array-other-array)
 * [array_filter_recursive](#array_filter_recursivearray-callable-test--null-array)
 
-## modify
+## access
+* [array_get](#array_getarray-array-path-string-separator--)
 * [array_pick](#array_pickarray-array-array-values-array)
 
 ### Function detail
@@ -256,13 +257,33 @@ array_filter_recursive($array, function ($v, $k) {
 // ]
 ```
 
+#### array_get(array $array, $path, string $separator = '.') 
+
+Retrieves a value from a nested array. Notation of `$path` is dot or array. If `$path` is string, you can modify its separator from dot as 3rd argument.
+
+```php
+$array = [
+    'user' => [
+        'name' => 'mike',
+    ],
+];
+
+array_get($array, ['user', 'name']);
+array_get($array, 'user.name');
+array_get($array, 'user_name', '_');
+// mike
+
+array_get($array, 'invalid');
+// null
+```
+
 #### array_pick(array &$array, array $values): array
 
 Find whether `$values` match elements of `$array` strictly, and takes matched values from `$array`. Has side effect and modify `$array`.
 
 ```
 $array = ['a', null, true, 'b'];
-$picked = array_pick($array, ['a', true]);
+
 
 $picked;
 // [0 => 'a', 2 => true]
