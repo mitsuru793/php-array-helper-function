@@ -165,6 +165,28 @@ if (!function_exists('array_get')) {
     }
 }
 
+if (!function_exists('array_set')) {
+    /**
+     * @param array|string $path
+     */
+    function array_set(array &$array, $path, $value, string $separator = '.'): void
+    {
+        if (is_array($path)) {
+            $keys = $path;
+        } elseif (is_string($path)) {
+            $keys = explode($separator, $path);
+        } else {
+            throw new InvalidArgumentException('Type of argument $path must be array or string, but ' . gettype($path) . '.');
+        }
+
+        $current = &$array;
+        foreach ($keys as $key) {
+            $current = &$current[$key];
+        }
+        $current = $value;
+    }
+}
+
 if (!function_exists('array_pick')) {
     function array_pick(array &$array, array $values): array
     {

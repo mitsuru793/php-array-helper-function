@@ -34,6 +34,7 @@ require 'vendor/autoload.php';
 
 ## access
 * [array_get](#array_getarray-array-path-string-separator--)
+* [array_set](#array_setarray-array-path-value-string-separator---void)
 * [array_pick](#array_pickarray-array-array-values-array)
 
 ### Function detail
@@ -275,6 +276,25 @@ array_get($array, 'user_name', '_');
 
 array_get($array, 'invalid');
 // null
+```
+
+#### array_set(array &$array, $path, $value, string $separator = '.'): void
+  
+Set a `$value` within a nested array. Notation of `$path` is dot or array. If `$path` is string, you can modify its separator from dot as 3rd argument.
+
+```php
+$array = [];
+
+array_set($array, ['user', 'name'], 'Mike');
+array_set($array, 'user.name', 'Mike');
+array_set($array, 'user_name', 'Mike', '_');
+
+$array;
+// [
+//     'user' => [
+//         'name' => 'Mike'
+//     ]
+// ]
 ```
 
 #### array_pick(array &$array, array $values): array
